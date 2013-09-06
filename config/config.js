@@ -9,6 +9,6 @@ module.exports = {
       port: 3000,
       secret: 'SOMETHINGs3cur3333'
     },
-    clientUrl: 'http://localhost:3000'
+    clientUrl: 'http://localhost:3001'
   }
-}
+};

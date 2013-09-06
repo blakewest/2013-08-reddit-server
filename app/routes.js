@@ -1,18 +1,6 @@
 var passport      = require('passport');
 
 module.exports = function(app, config) {
-  // Setup CORS
-  app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', config.clientUrl);
-    res.header('Access-Control-Allow-Headers', 'Content-Type,X-Requested-With');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    next();
-  });
-
-  app.options('*', function(req, res){
-    res.send(200); 
-  });
-
   // Setup API blockade
   app.all('/api/*', function(req, res, next) {
     // passport gives us a 'isAuthenticated' method
@@ -22,12 +10,21 @@ module.exports = function(app, config) {
     return res.send(401, 'Unauthorized');
   });
 
-  // Auth
-  app.post('/api/login', function(req, res, next) {
-    // Implement login
+  app.get('/', function(req, res) {
+    // console.log('this is getting called');
+    // fs.readFile('/public/index.html', function(err, data) {
+    //   var html = data.toString();
+    //   res.end(html);
+    // });
   });
 
-  app.post('/api/signup', function(req, res, next) {
+  // Auth
+  app.post('/login', function(req, res, next) {
+    // Implement login
+    console.log('your loggin in');
+  });
+
+  app.post('/signup', function(req, res, next) {
     // Implement signup
   });
 
@@ -38,4 +35,4 @@ module.exports = function(app, config) {
   app.get('/api/rate', function(req, res, next) {
     // Implement news rating
   });
-}
+};

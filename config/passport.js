@@ -5,5 +5,4 @@ var mongoose        = require('mongoose'),
 module.exports = function(app, config) {
   var passport = app.get('passport');
   // Implement the passport local strategy
-  
-}
+};
