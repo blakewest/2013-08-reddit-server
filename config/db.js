@@ -1,10 +1,13 @@
-var mongoose    = require('mongoose'),
-    Schema      = mongoose.Schema;
+var mongoose    = require('mongoose');
+var Schema      = mongoose.Schema;
 
 module.exports = function(app, config) {
-  var db = mongoose.connect(config.db);
+  mongoose.connect(config.db); //why isn't config required?
 
-  // Setup database and UserSchema
+  var userSchema = new Schema({
+      username: String,
+      password: String
+    });
+  var User = mongoose.model('User', userSchema);
 
-  return db;
-}
+};
