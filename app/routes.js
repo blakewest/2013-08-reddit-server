@@ -1,7 +1,14 @@
 var passport      = require('passport');
+var mongoose      = require('mongoose');
+var config        = require('../config/config.js')['development'];
+var express       = require('express');
+var User          = mongoose.model('User', 'users');
+// var Collection    = mongoose.Schema('users');
 
-module.exports = function(app, config) {
+
+module.exports = function(app, config, db) {
   // Setup API blockade
+  app.use(express.bodyParser());
   app.all('/api/*', function(req, res, next) {
     // passport gives us a 'isAuthenticated' method
     // we'll check this method
@@ -9,6 +16,8 @@ module.exports = function(app, config) {
 
     return res.send(401, 'Unauthorized');
   });
+
+  //app.db.User
 
   app.get('/', function(req, res) {
     // console.log('this is getting called');
@@ -25,7 +34,15 @@ module.exports = function(app, config) {
   });
 
   app.post('/signup', function(req, res, next) {
-    // Implement signup
+    var user = new User({username: ''+req.body.username, password: ''+req.body.password});
+    user.save();
+    var newUser;
+    res.writeHead(200);
+    User.find({}, function(err, data) {
+      newUser = data[data.length-1];
+      res.write("Your username is " + newUser.username);
+      res.end();
+    });
   });
 
   app.get('/api/news', function(req, res, next) {

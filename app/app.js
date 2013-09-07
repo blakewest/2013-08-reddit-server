@@ -22,7 +22,7 @@ module.exports = function() {
   require('../config/passport')(app, config);
 
   // Routes
-  require('./routes')(app, config);
+  require('./routes')(app, config, db);
 
   // Start the app
   var port = process.env.PORT || config.port || 3000;
