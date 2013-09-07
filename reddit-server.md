@@ -14,7 +14,7 @@ Basic requirements
 
 * [Y] Implement Gruntfile
 * [Y] Add the User model
-* [ ] Configure the express app to route the following routes:
+* [Y] Configure the express app to route the following routes:
   * /signup   - User signup. Parameters: email & password
   * /login    - User login, Params: email & password
   * /api/news     - Get the latest news
