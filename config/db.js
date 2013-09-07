@@ -10,4 +10,10 @@ module.exports = function(app, config) {
     });
   var User = mongoose.model('User', userSchema);
 
+  var newsSchema = new Schema({
+    url: String,
+    upvote: Number,
+    downvote: Number
+  });
+  var NewsItem = mongoose.model('NewsItem', newsSchema);
 };

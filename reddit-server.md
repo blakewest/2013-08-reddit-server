@@ -19,7 +19,7 @@ Basic requirements
   * /login    - User login, Params: email & password
   * /api/news     - Get the latest news
   * /api/rate     - Rate a news article (send a rating)
-* [ ] Setup a UserSchema in Mongo
+* [Y] Setup a UserSchema in Mongo
 * [ ] Configure the express app to use passport local strategy
 * [ ] Configure the express app to use passport reddit strategy
 * [ ] Integrate our previous app with this one (hint: use the public/ directory)
